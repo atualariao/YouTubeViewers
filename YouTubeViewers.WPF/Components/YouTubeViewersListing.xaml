@@ -24,7 +24,8 @@
                     CornerRadius="5" />
                 <ListView 
                     BorderThickness="0"
-                    ItemsSource="{Binding YouTubeViewersListingItemViewModels}">
+                    ItemsSource="{Binding YouTubeViewersListingItemViewModels}"
+                    SelectedItem="{Binding SelectedYouTubeViewerListingItemViewModel}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -34,6 +35,12 @@
                         <DataTemplate>
                             <Border Padding="10" TextBlock.FontSize="16">
                                 <Grid>
+                                    <Grid.Resources>
+                                        <Style TargetType="{x:Type custom:DropdownMenu}">
+                                            <Setter Property="Cursor" Value="Hand" />
+                                        </Style>
+                                    </Grid.Resources>
+                                    
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="auto" />
@@ -49,13 +56,12 @@
                                             BorderBrush="Gray" 
                                             BorderThickness="1">
 
-                                            <StackPanel>
+                                            <StackPanel MinWidth="125">
                                                 <StackPanel.Resources>
                                                     <Style TargetType="Button">
                                                         <Setter Property="Background" Value="#F0F0F0" />
                                                         <Setter Property="Foreground" Value="Black" />
-                                                        <Setter Property="HorizontalAlignment" Value="Stretch" />
-                                                        <Setter Property="Padding" Value="15 5" />
+                                                        <Setter Property="Padding" Value="20 10" />
                                                         <Setter Property="Cursor" Value="Hand" />
 
                                                         <Setter Property="Template">
@@ -101,11 +107,17 @@
                                                     </Style>
                                                 </StackPanel.Resources>
 
-                                                <Button Content="Edit" />
-                                                <Button Content="Delete" />
+                                                <Button
+                                                   Command="{Binding EditCommand}"
+                                                   Content="Edit"
+                                                    />
+                                                <Button 
+                                                    Command="{Binding DeleteCommand}"
+                                                    Content="Delete" />
                                             </StackPanel>
                                         </Border>
                                     </custom:DropdownMenu>
+                                    
                                 </Grid>
                             </Border>
                         </DataTemplate>
