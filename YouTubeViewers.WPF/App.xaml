@@ -6,10 +6,14 @@
         <ResourceDictionary>
             <SolidColorBrush x:Key="BorderPrimary" Color="#1C1C1C" />
 
+            <Style x:Key="PageHeader" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="32" />
+            </Style>
+
             <Style TargetType="Button">
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="Background" Value="#547AFF" />
-                <Setter Property="Padding" Value="15 5" />
+                <Setter Property="Padding" Value="20 8" />
                 <Setter Property="Cursor" Value="Hand" />
                 <Setter Property="VerticalAlignment" Value="Center" />
                 <Setter Property="HorizontalAlignment" Value="Center" />
@@ -55,9 +59,61 @@
                             </BeginStoryboard>
                         </Trigger.ExitActions>
                     </Trigger>
+
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Opacity" Value="0.7" />
+                    </Trigger>
                 </Style.Triggers>
             </Style>
-            
+
+            <Style x:Key="ButtonSecondary" 
+                   TargetType="Button" 
+                   BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="Background" Value="#E1E1E1" />
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                                CornerRadius="3"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}"
+                                Margin="{TemplateBinding Margin}">
+                                <ContentPresenter />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <Style.Triggers>
+                    <Trigger
+                        Property="IsMouseOver"
+                        Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation 
+                                        Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" 
+                                        To="#C2C2C2" 
+                                        Duration="0:0:0.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation 
+                                        Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" 
+                                        To="#E1E1E1" 
+                                        Duration="0:0:0.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
