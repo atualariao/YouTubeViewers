@@ -17,9 +17,10 @@ namespace YouTubeViewers.WPF.ViewModels
         public ICommand? EditCommand { get; }
         public ICommand? Delete { get; }
 
-        public YouTubeViewersListingItemViewModel(YouTubeViewer youTubeViewer)
+        public YouTubeViewersListingItemViewModel(YouTubeViewer youTubeViewer, ICommand editCommand)
         {
             YouTubeViewer = youTubeViewer;
+            EditCommand = editCommand;
         }
     }
 
