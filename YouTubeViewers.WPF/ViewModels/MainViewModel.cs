@@ -31,7 +31,7 @@ namespace YouTubeViewers.WPF.ViewModels
 
         public void ModalNavigationStore_CurrentViewModelChanged()
         {
-            OnPropertyChanged(nameof(ModalNavigationStore));
+            OnPropertyChanged(nameof(CurrentModalViewModel));
             OnPropertyChanged(nameof(IsModalOpen));
         }
     }

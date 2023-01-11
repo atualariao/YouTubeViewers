@@ -20,6 +20,7 @@
 
         <components:YouTubeViewerDetailsForm 
             Grid.Row="1"
-            Margin="0 30 0 0" />
+            Margin="0 30 0 0" 
+            DataContext="{Binding YouTubeViewerDetailsFormViewModel}" />
     </Grid>
 </UserControl>
